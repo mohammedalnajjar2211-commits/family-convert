@@ -147,6 +147,15 @@ button:hover{
   box-shadow:0 0 25px rgba(255,0,60,.5);
 }
 
+    .copy-btn{
+  margin-top:10px;
+  background:linear-gradient(90deg,#111,#2b2b2b);
+  border:1px solid #ff003c;
+}
+
+.copy-btn:hover{
+  background:#ff003c;
+}
 /* الفوتر */
 
 .footer{
@@ -251,6 +260,9 @@ button:hover{
       id="m3uResult"
       readonly
       placeholder="سيظهر رابط M3U هنا"></textarea>
+      <button class="copy-btn" onclick="copyM3U()">
+  نسخ رابط M3U
+</button>
 
   </div>
 
@@ -277,6 +289,9 @@ button:hover{
       id="parseResult"
       readonly
       placeholder="ستظهر النتائج هنا"></textarea>
+      <button class="copy-btn" onclick="copyParse()">
+  نسخ البيانات
+</button>
 
   </div>
 
@@ -374,7 +389,35 @@ ${password}`;
   }
 
 }
+function copyM3U(){
 
+  let text =
+    document.getElementById("m3uResult").value;
+
+  if(!text){
+    alert("لا يوجد رابط للنسخ");
+    return;
+  }
+
+  navigator.clipboard.writeText(text);
+
+  alert("تم نسخ رابط M3U");
+}
+
+function copyParse(){
+
+  let text =
+    document.getElementById("parseResult").value;
+
+  if(!text){
+    alert("لا توجد بيانات للنسخ");
+    return;
+  }
+
+  navigator.clipboard.writeText(text);
+
+  alert("تم نسخ البيانات");
+}
 </script>
 
 </body>
